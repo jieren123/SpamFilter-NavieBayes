@@ -43,7 +43,7 @@ pWordsSpamicity = np.log(wordsInSpamNum / spamWordsNum)
 pWordsHealthy = np.log(wordsInHealthNum / healthWordsNum)
 ```
 
-## 2 Running Adaboost on Naive Bayes to prevent Bayesian poisoning
+## 2 Running Adaboost on Naive Bayes to Prevent Bayesian Poisoning
 AdaBoost, (Adaptive Boosting) is a boosting approach in machine learning based on the idea of creating a highly accurate prediction rule by combining many relatively weak and inaccurate rules. I implemented AdaBoost and NaiveBayes as a classifier interface in my framework in order to increase the spamicity rate of word.
 ```
 	set iteratenum = 1000 
