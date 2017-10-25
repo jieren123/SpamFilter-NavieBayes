@@ -28,20 +28,20 @@ where:
 The result p is typically compared to a given threshold to decide whether the message is spam or not. If p is lower than the threshold, the message is considered as likely ham, otherwise it is considered as likely spam
 
 **But the disadvantage of this suitation**
- *Rare word* : When the word doesn't exist, both the numerator and the denominator are equal to zero. Or more generally the words that were encountered only a few times during the learning phase cause a problem, because it would be an error to trust blindly the informatio n they provide.
-	-Solution: 
-	- 1. Pr(S) can again be taken equal to 0.5, to avoid being too suspicious about incoming email.
-	```
-	wordsInSpamNum = np.ones(numWords)
-    wordsInHealthNum = np.ones(numWords)
-    spamWordsNum = 2.0
-    healthWordsNum = 2.0
-    ```
-	- 2. Take log of P(Wi|S) and P(Wi|H)
-	```
-    pWordsSpamicity = np.log(wordsInSpamNum / spamWordsNum)
-    pWordsHealthy = np.log(wordsInHealthNum / healthWordsNum)
-	```
+*Rare word* : When the word doesn't exist, both the numerator and the denominator are equal to zero. Or more generally the words that were encountered only a few times during the learning phase cause a problem, because it would be an error to trust blindly the informatio n they provide.
+-Solution: 
+- 1. Pr(S) can again be taken equal to 0.5, to avoid being too suspicious about incoming email.
+```
+wordsInSpamNum = np.ones(numWords)
+wordsInHealthNum = np.ones(numWords)
+spamWordsNum = 2.0
+healthWordsNum = 2.0
+```
+- 2. Take log of P(Wi|S) and P(Wi|H)
+```
+pWordsSpamicity = np.log(wordsInSpamNum / spamWordsNum)
+pWordsHealthy = np.log(wordsInHealthNum / healthWordsNum)
+```
 
 ## 2 Running Adaboost on Naive Bayes to prevent Bayesian poisoning
 AdaBoost, (Adaptive Boosting) is a boosting approach in machine learning based on the idea of creating a highly accurate prediction rule by combining many relatively weak and inaccurate rules. I implemented AdaBoost and NaiveBayes as a classifier interface in my framework in order to increase the spamicity rate of word.
@@ -59,13 +59,13 @@ AdaBoost, (Adaptive Boosting) is a boosting approach in machine learning based o
                 else:  # original: spam，predict: ham
                     DS[testWordsCount != 0] = (DS[testWordsCount != 0] + np.exp(alpha)) / DS[testWordsCount != 0]
                 return DS
-````
+
 Get DS to adjust ps
 
-````
     ps = sum(testWordsMarkedArray * pWordsSpamicity * DS) + np.log(pSpam)
 
 ```
+
 You can import AdaBoostClassifier from sklearn.ensemble for this part. I write it just in order to full presently my idea.
 
 ## Reference 
