@@ -2,8 +2,7 @@
 An implementation of a Naive Bayesian Classifier in Python. Naive Bayes methods are a set of supervised learning algorithms based on applying Bayes’ theorem with the “naive” assumption of independence between every pair of features.This methods to classify documents, based on the words that appear within them. A common application for this type of software is in email spam filters.
 
 ## 1. Navie Bayes Spam Filtering
-S =  the probability that the email is spam
-H =  the probability that the email is ham
+S = the email is spam, H = the email is ham, W = the word  
 ```
 Background: Bayes Therom P(S|W) = (P(W|S)*P(S))/(P(W|S)*P(S)+P(W|H)*P(H))
 
